@@ -7,6 +7,7 @@
 portfolio_ggplot(
   stats_port,
   min_port,
+  eff_port,
   eff_front,
   tang_port,
   rf,
@@ -19,6 +20,8 @@ portfolio_ggplot(
 \item{stats_port}{Promedio, desviacion estandar y varianza-covarianza}
 
 \item{min_port}{Portafolio minima varianza}
+
+\item{eff_port}{Portafolio eficiente sujeto a un retorno}
 
 \item{eff_front}{Frontera efciente}
 

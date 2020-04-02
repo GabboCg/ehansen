@@ -5,6 +5,7 @@
 #'
 #' @param stats_port Promedio, desviacion estandar y varianza-covarianza
 #' @param min_port Portafolio minima varianza
+#' @param eff_port Portafolio eficiente sujeto a un retorno
 #' @param eff_front Frontera efciente
 #' @param tang_port Portafolio tangente
 #' @param rf Tasa libre de riesgo
@@ -16,7 +17,7 @@
 #' @export
 #'
 #' @examples
-portfolio_ggplot <- function(stats_port, min_port, eff_front, tang_port, rf, title, subtitle, caption) {
+portfolio_ggplot <- function(stats_port, min_port, eff_port, eff_front, tang_port, rf, title, subtitle, caption) {
 
   risk_free <- rf
 
@@ -27,9 +28,13 @@ portfolio_ggplot <- function(stats_port, min_port, eff_front, tang_port, rf, tit
                color = "#008b8b", size = 3) +
     geom_path(mapping = aes(eff_front$sd, eff_front$er),
               color = "#008b8b") +
-    geom_point(mapping = aes(min_port$sd, min_port$er, color = "a"),
+    geom_point(mapping = aes(eff_port$sd, eff_port$er),
+               fill = "#808080", color = "black",  size = 5, shape = 23) +
+    geom_point(mapping = aes(min_port$sd, min_port$er),
                fill = "#cc6633", color = "black",  size = 5, shape = 23) +
-    geom_point(mapping = aes(tang_port$sd, tang_port$er, color = "b"),
+    geom_abline(intercept = risk_free, slope = sharpe_ratio,
+                colour = "darkgreen") +
+    geom_point(mapping = aes(tang_port$sd, tang_port$er),
                fill ="#FFCC00", color = "black", size = 5, shape = 23) +
     geom_point(mapping = aes(stats_port$Std,
                              stats_port$Mean),
@@ -41,8 +46,6 @@ portfolio_ggplot <- function(stats_port, min_port, eff_front, tang_port, rf, tit
              color = "Black",
              hjust = -0.25,
              vjust = -0.25) +
-    geom_abline(intercept = risk_free, slope = sharpe_ratio,
-                colour = "darkgreen") +
     scale_y_continuous(labels = scales::percent) +
     theme_minimal() +
     theme(plot.background = element_rect(fill = "#FFF1E0"),
@@ -62,5 +65,53 @@ portfolio_ggplot <- function(stats_port, min_port, eff_front, tang_port, rf, tit
          caption = caption)
 
   return(gg)
+
+}
+
+#' Grafica Portafolios
+#'
+#' @import ggplot2
+#' @importFrom scales percent
+#' @importFrom rlang .data
+#'
+#' @param returns_tbl Retornos
+#' @param title Titulo
+#' @param subtitle Subtitulo
+#' @param caption Nota al pie
+#'
+#' @return
+#' @export
+#'
+#' @examples
+cumulative_ggplot <- function(returns_tbl, title, subtitle, caption) {
+
+  returns_tbl %>%
+    group_by(.data$symbol) %>%
+    mutate(return_cumulative = cumsum(.data$return),
+           date = as.Date(.data$date)) %>%
+    ungroup() %>%
+    ggplot(aes(y = .data$return_cumulative,
+               x = .data$date,
+               color = .data$symbol)) +
+    geom_line(size = 0.75) +
+    scale_y_continuous(labels = scales::percent) +
+    theme_minimal() +
+    theme(plot.background = element_rect(fill = "#FFF1E0"),
+          plot.title = element_text(color = "black", size = 20, face = "bold"),
+          plot.subtitle = element_text(color = "#808080",
+                                       margin = margin(0, 0, 0, b = 0.25, "cm"), size = 16),
+          panel.border = element_rect(linetype = "solid", color = "grey", fill = NA),
+          axis.text.x = element_text(face = "bold", color = "#a89a90", size = 12),
+          axis.text.y = element_text(face = "bold", color = "#a89a90", size = 12),
+          axis.title.x = element_text(face = "bold", color = "#a89a90", size = 16),
+          axis.title.y = element_text(face = "bold", color = "#a89a90", size = 16),
+          legend.position='bottom',
+          plot.margin = margin(1, 1.5, 0.5, 0.75, "cm")) +
+    guides(color = guide_legend(title = "Activos:")) +
+    labs(title = title,
+         subtitle = subtitle,
+         y = "",
+         x = "",
+         caption = caption)
 
 }

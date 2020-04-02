@@ -27,4 +27,5 @@ Imports:
     ggplot2 (>= 3.3.0),
     tibble (>= 2.1.3),
     rlang (>= 0.4.5),
-    scales(>= 1.1.0)
+    scales(>= 1.1.0),
+    tseries(>= 0.10)
