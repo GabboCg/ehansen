@@ -1,8 +1,8 @@
 #' Black-Litterman: Optimal Weights
 #'
-#' @param ra something
-#' @param mu something
-#' @param cov something
+#' @param ra Aversión al riesgo
+#' @param mu Retornos
+#' @param cov Matriz varianza y covarianza
 #'
 #' @return
 #' @export

@@ -26,14 +26,17 @@ download_stocks <- function (stocks, periodicity, from, to) {
 
   for (i in seq_along(stocks)) {
 
-    df <- get(stocks[i]) %>%
+    get_stocks <- ifelse(stringr::str_detect(stocks[i], "^"),
+                         stringr::str_replace(stocks[i], "[\\^]", ""),
+                         stocks[i])
+
+    df <- get(get_stocks) %>%
       tibble::as_tibble(rownames = "rowname") %>%
       rename(date = .data$rowname) %>%
-      mutate(symbol = stocks[i]) %>%
-      rename_at(vars(starts_with(paste0(stocks[i], "."))),
-                     list(~ tolower(stringr::str_replace(.,
-                                                         paste0(stocks[i],
-                                                                "."), ""))))
+      mutate(symbol = get_stocks) %>%
+      rename_at(vars(starts_with(paste0(get_stocks, "."))),
+                list(~ tolower(stringr::str_replace(.,
+                                                    paste0(get_stocks, "."), ""))))
     list_stocks[[i]] <- df
 
   }

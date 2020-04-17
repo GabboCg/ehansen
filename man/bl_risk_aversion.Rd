@@ -7,9 +7,9 @@
 bl_risk_aversion(bench, rf)
 }
 \arguments{
-\item{bench}{something}
+\item{bench}{Activo benchmark}
 
-\item{rf}{risk free}
+\item{rf}{Tasa libre de riesgo}
 }
 \value{
 

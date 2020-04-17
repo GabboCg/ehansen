@@ -1,12 +1,12 @@
 #' Black-Litterman: Retorno esperado
 #'
-#' @param mu something
-#' @param cov something
-#' @param pmat something
-#' @param qmat something
-#' @param tau something
-#' @param omega something
-#' @param confidence something
+#' @param mu Retorno
+#' @param cov Matrix varianza y covarianza
+#' @param pmat Matriz P
+#' @param qmat Matriz Q
+#' @param tau Escalar tau
+#' @param omega Matriz Omega
+#' @param confidence Nivel de confianza
 #'
 #' @return
 #' @export

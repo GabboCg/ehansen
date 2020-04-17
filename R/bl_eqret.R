@@ -1,9 +1,9 @@
 #' Black-Litterman: Retorno de equilibrio
 #'
-#' @param ra something
-#' @param cov something
-#' @param mktcapw something
-#' @param rf something
+#' @param ra Aversion al riesgo
+#' @param cov Matriz de varianza y covarianza
+#' @param mktcapw Capitalización de mercado
+#' @param rf Tasa libre de riesgo
 #'
 #' @return
 #' @export

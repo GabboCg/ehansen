@@ -7,11 +7,11 @@
 bl_optimal(ra, mu, cov)
 }
 \arguments{
-\item{ra}{something}
+\item{ra}{Aversión al riesgo}
 
-\item{mu}{something}
+\item{mu}{Retornos}
 
-\item{cov}{something}
+\item{cov}{Matriz varianza y covarianza}
 }
 \value{
 

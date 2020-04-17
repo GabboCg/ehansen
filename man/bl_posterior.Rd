@@ -7,19 +7,19 @@
 bl_posterior(mu, cov, pmat = NULL, qmat, tau, omega = NULL, confidence = NULL)
 }
 \arguments{
-\item{mu}{something}
+\item{mu}{Retorno}
 
-\item{cov}{something}
+\item{cov}{Matrix varianza y covarianza}
 
-\item{pmat}{something}
+\item{pmat}{Matriz P}
 
-\item{qmat}{something}
+\item{qmat}{Matriz Q}
 
-\item{tau}{something}
+\item{tau}{Escalar tau}
 
-\item{omega}{something}
+\item{omega}{Matriz Omega}
 
-\item{confidence}{something}
+\item{confidence}{Nivel de confianza}
 }
 \value{
 

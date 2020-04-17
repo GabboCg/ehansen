@@ -1,7 +1,7 @@
 #' Black-Litterman: Risk Aversion
 #'
-#' @param bench something
-#' @param rf risk free
+#' @param bench Activo benchmark
+#' @param rf Tasa libre de riesgo
 #'
 #' @importFrom stats var
 #'

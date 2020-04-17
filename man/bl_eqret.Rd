@@ -7,13 +7,13 @@
 bl_eqret(ra, cov, mktcapw, rf)
 }
 \arguments{
-\item{ra}{something}
+\item{ra}{Aversion al riesgo}
 
-\item{cov}{something}
+\item{cov}{Matriz de varianza y covarianza}
 
-\item{mktcapw}{something}
+\item{mktcapw}{Capitalización de mercado}
 
-\item{rf}{something}
+\item{rf}{Tasa libre de riesgo}
 }
 \value{
 

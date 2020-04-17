@@ -4,15 +4,11 @@
 \name{pmat}
 \alias{pmat}
 \title{Views.}
-\format{A data frame with five variables: \code{year}, \code{sex},
-  \code{name}, \code{n} and \code{prop} (\code{n} divided by total number
-  of applicants in that year, which means proportions are of people of
-  that sex with that name born in that year).}
+\format{An object of class \code{matrix} with 3 rows and 30 columns.}
 \usage{
 pmat
 }
 \description{
-Full baby name data provided by the SSA. This includes all names with at
-least 5 uses.
+Views.
 }
 \keyword{datasets}

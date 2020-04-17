@@ -17,7 +17,7 @@ monthly_return <- function (stocks_tbl, type = c("log", "arithmetic")) {
     group_by(.data$symbol) %>%
     mutate(return = switch(type,
                            "log" = log(close / dplyr::lag(close)),
-                           "arithmetic" = (close - lag(close) / lag(close)))) %>%
+                           "arithmetic" = (close - dplyr::lag(close)) / dplyr::lag(close))) %>%
     filter(!is.na(return)) %>%
     select(date, return, .data$symbol)
 
