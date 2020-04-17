@@ -11,7 +11,8 @@
 import_investor_views <- function (investor_views) {
 
   investor_views_tbl <- readr::read_csv2(investor_views) %>%
-    as.matrix()
+  # select(sort(current_vars())) %>%
+  as.matrix()
 
   return(investor_views_tbl)
 
